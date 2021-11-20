@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const bcrypt = require('bcrypt');
-const User = require('../../models/UserModel');
+const User = require('../Models/UserModel');
 const { registerValidator } = require('./UserValidator');
 
 const UserController = {

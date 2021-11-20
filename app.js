@@ -6,14 +6,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
-const usersRouter = require('./routes/UserRouter');
+const usersRouter = require('./routes/usersRouter');
 
 const app = express();
 
 require('./boot/mongoose')();
 
 app.use(passport.initialize());
-require('./boot/auth')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
