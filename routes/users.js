@@ -1,9 +1,18 @@
-var express = require('express');
-var router = express.Router();
+const passport = require('passport');
+const express = require('express');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const router = express.Router();
+const {
+    register, deleteUser, getAllUsers, getCurrentUser,
+} = require('../controllers/UserController');
+
+const options = { session: false };
+
+router.post('/register', register);
+
+router.get('/current', passport.authenticate('bearer', options), getCurrentUser);
+router.get('/', passport.authenticate('bearer', options), getAllUsers);
+
+router.delete('/delete-user', passport.authenticate('bearer', options), deleteUser);
 
 module.exports = router;
